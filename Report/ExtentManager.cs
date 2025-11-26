@@ -15,7 +15,13 @@ namespace SeleniumCAzure.Report
         {
             if(extent == null)
             {
-                var reporter = new ExtentSparkReporter("C:\\SeleniumCAzure\\Report\\ExtentReports\\MyReport_" + DateTime.Now.ToString("ddMMyyyy_HHmmss") +".html");
+                // Create Reports folder if it doesn't exist
+                var reportFolder = Path.Combine(Directory.GetCurrentDirectory(), "Reports");
+                Directory.CreateDirectory(reportFolder);
+
+                // Save ExtentReport inside Reports folder
+                var reportPath = Path.Combine(reportFolder, "MyReport_" + DateTime.Now.ToString("ddMMyyyy_HHmmss") + ".html");
+                var reporter = new ExtentSparkReporter(reportPath);
                 extent = new ExtentReports();
                 extent.AttachReporter(reporter);
             }
