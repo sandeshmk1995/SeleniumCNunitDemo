@@ -15,11 +15,21 @@ namespace SeleniumCAzure.Report
         {
             if(extent == null)
             {
-                var repoRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
-                var reportFolder = Path.Combine(repoRoot, "ExtentReports");
+                var repoRoot = Environment.GetEnvironmentVariable("BUILD_SOURCESDIRECTORY");
+
+                // If running locally, this is null → fallback to project root
+                if (string.IsNullOrEmpty(repoRoot))
+                {
+                    repoRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)
+                                        .Parent.Parent.Parent.FullName;
+                }
+
+                var reportFolder = Path.Combine(repoRoot, "Report", "ExtentReports");
                 Directory.CreateDirectory(reportFolder);
 
-                var reportPath = Path.Combine(reportFolder, "MyReport_" + DateTime.Now.ToString("ddMMyyyy_HHmmss") + ".html");
+                var reportPath = Path.Combine(reportFolder,
+                    "MyReport_" + DateTime.Now.ToString("ddMMyyyy_HHmmss") + ".html");
+
                 var reporter = new ExtentSparkReporter(reportPath);
                 extent = new ExtentReports();
                 extent.AttachReporter(reporter);
