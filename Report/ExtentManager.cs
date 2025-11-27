@@ -26,6 +26,7 @@ namespace SeleniumCAzure.Report
 
                 var reportFolder = Path.Combine(repoRoot, "Report", "ExtentReports");
                 Directory.CreateDirectory(reportFolder);
+                Console.WriteLine("REPORT FOLDER PATH: " + reportFolder);
 
                 var reportPath = Path.Combine(reportFolder,
                     "MyReport_" + DateTime.Now.ToString("ddMMyyyy_HHmmss") + ".html");
