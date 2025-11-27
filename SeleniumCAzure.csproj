@@ -43,7 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Report\ExtentReports\" />
+    <Folder Include="ExtentReports\" />
     <Folder Include="Report\Screenshots\" />
     <Folder Include="TestData\" />
   </ItemGroup>

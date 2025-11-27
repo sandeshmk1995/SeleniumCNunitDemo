@@ -16,7 +16,7 @@ namespace SeleniumCAzure.Report
             if(extent == null)
             {
                 var repoRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
-                var reportFolder = Path.Combine(repoRoot, "Report");
+                var reportFolder = Path.Combine(repoRoot, "ExtentReports");
                 Directory.CreateDirectory(reportFolder);
 
                 var reportPath = Path.Combine(reportFolder, "MyReport_" + DateTime.Now.ToString("ddMMyyyy_HHmmss") + ".html");
