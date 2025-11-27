@@ -24,7 +24,7 @@ namespace SeleniumCAzure.Report
                                         .Parent.Parent.Parent.FullName;
                 }
 
-                var reportFolder = Path.Combine(repoRoot, "Report", "ExtentReports");
+                string reportFolder = Path.Combine(repoRoot, "Report", "ExtentReports");
                 Directory.CreateDirectory(reportFolder);
                 Console.WriteLine("REPORT FOLDER PATH: " + reportFolder);
 
